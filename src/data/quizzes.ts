@@ -5,22 +5,32 @@ export const quizzes = [
     description: "",
     questions: [
       {
-        question: "Έστω τα \\(\\mathit{A}\\), \\(\\mathit{B}\\) σύνολα. Ποια (ή ποιες) από τις παρακάτω προτάσεις είναι λανθασμένη (λανθασμένες); Θυμίζουμε ότι \\(\\mathit{A} - \\mathit{B} = \\mathit{A} \\cap \\mathit{\\overline{B}}\\)",
+        question: "Έστω τα \\(\\mathit{A}\\), \\(\\mathit{B}\\) σύνολα. Ποια (ή ποιες) από τις παρακάτω προτάσεις είναι λανθασμένη (λανθασμένες); Θυμίζουμε ότι \\(\\mathit{A} - \\mathit{B} = \\mathit{A} \\cap \\mathit{\\overline{B}}\\).",
         answers: [
           {
-            text: "\\(\\Alpha - \\Beta = \\Beta - \\Alpha\\)",
+            text: "\\((\\mathit{A} - \\mathit{Β})\\ \\cup \\mathit{B} = \\mathit{A} \\cup \\mathit{B} \\)",
+            correct: false,
+            description: ""
+          },
+          {
+            text: "\\((\\mathit{A} - \\mathit{Β})\\ \\cap \\mathit{Β} =  \\emptyset \\)",
+            correct: false,
+            description: ""
+          },
+          {
+            text: "\\((\\mathit{A} - \\mathit{Β}) \\iff \(\\mathit{A} - \\mathit{B} = \\mathit{B} - \\mathit{A})\\)",
+            correct: false,
+            description: ""
+          },
+          {
+            "text": "\\((\\mathit{A} - \\mathit{B} = \\mathit{A}) \\iff (\\mathit{A} \\cap \\mathit{B} = \\emptyset)\\)",
+            correct: false,
+            description: ""
+          },
+          {
+            text: "Όλες οι προηγούμενες προτάσεις είναι λάθος.",
             correct: true,
-            description: "This is generally incorrect. Set difference is not commutative."
-          },
-          {
-            text: "\\(\\Alpha - \\Beta \\subseteq \\Alpha\\)",
-            correct: false,
-            description: "This is correct. The set difference will always be a subset."
-          },
-          {
-            text: "\\(\\Alpha \\cap (\\Alpha - \\Beta) = \\emptyset\\)",
-            correct: false,
-            description: "This is correct. The intersection of A and (A - B) is empty"
+            description: "Εφόσον όλες οι προηγούμενες προτάσεις είναι σωστές, αυτή η πρόταση είναι λανθασμένη."
           }
         ]
       }

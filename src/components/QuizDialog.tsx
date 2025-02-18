@@ -12,13 +12,19 @@ interface QuizDialogProps {
 export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
-  const [showDescription, setShowDescription] = useState(false);
+  const [expandedAnswers, setExpandedAnswers] = useState<boolean[]>([]);
+
+  useEffect(() => {
+    // Initialize expandedAnswers with all values set to false
+    if (quiz.questions[currentQuestion]) {
+      setExpandedAnswers(new Array(quiz.questions[currentQuestion].answers.length).fill(false));
+    }
+  }, [currentQuestion, quiz]);
 
   // Reset states when dialog is closed
   useEffect(() => {
     if (!isOpen) {
       setSelectedAnswer(null);
-      setShowDescription(false);
     }
   }, [isOpen]);
 
@@ -28,12 +34,17 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
 
   const handleAnswerClick = (index: number) => {
     setSelectedAnswer(index);
+    // Toggle the expanded state for the clicked answer
+    setExpandedAnswers(prev => {
+      const newState = [...prev];
+      newState[index] = !newState[index];
+      return newState;
+    });
   };
 
   const handleClose = () => {
     onClose();
     setSelectedAnswer(null);
-    setShowDescription(false);
   };
 
   const getAnswerClassName = (index: number) => {
@@ -54,7 +65,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
       <MathJaxContext>
         <div className="bg-white rounded-xl max-w-2xl w-full p-6">
           <div className="flex justify-between items-center mb-6">
-            <h3 className="text-xl font-bold">Question {currentQuestion + 1}/{quiz.questions.length}</h3>
+            <h3 className="text-xl font-bold">{currentQuestion + 1}/{quiz.questions.length} {quiz.questions.length === 1 ? 'ερώτηση' : 'ερωτήσεις'}</h3>
             <button
               onClick={handleClose}
               className="text-gray-500 hover:text-gray-700"
@@ -69,35 +80,41 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
 
           <div className="space-y-2">
             {question.answers.map((answer, index) => (
-              <div
-                key={index}
-                onClick={() => handleAnswerClick(index)}
-                className={getAnswerClassName(index)}
-              >
-                <MathJax>{answer.text}</MathJax>
+              <div key={index}>
+                <div
+                  onClick={() => handleAnswerClick(index)}
+                  className={getAnswerClassName(index)}
+                >
+                  <MathJax>{answer.text}</MathJax>
+                </div>
+                {selectedAnswer !== null && (
+                  <div className="mt-4">
+                    <button
+                      onClick={() => {
+                        setExpandedAnswers(prev => {
+                          const newState = [...prev];
+                          newState[index] = !newState[index];
+                          return newState;
+                        });
+                      }}
+                      className="flex items-center gap-2 text-blue-600 hover:text-blue-700"
+                    >
+                      {expandedAnswers[index] ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
+                      {expandedAnswers[index] ? "Κρύψε την" : "Δείξε την"} εξήγηση
+                    </button>
+
+                    {expandedAnswers[index] && (
+                      <div className="mt-2 p-4 bg-gray-50 rounded-lg">
+                        <MathJax>
+                          {answer.description}
+                        </MathJax>
+                      </div>
+                    )}
+                  </div>
+                )}
               </div>
             ))}
           </div>
-
-          {selectedAnswer !== null && (
-            <div className="mt-4">
-              <button
-                onClick={() => setShowDescription(!showDescription)}
-                className="flex items-center gap-2 text-blue-600 hover:text-blue-700"
-              >
-                {showDescription ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                {showDescription ? "Hide" : "Show"} Explanation
-              </button>
-              
-              {showDescription && (
-                <div className="mt-2 p-4 bg-gray-50 rounded-lg">
-                  <MathJax>
-                    {question.answers[selectedAnswer].description}
-                  </MathJax>
-                </div>
-              )}
-            </div>
-          )}
         </div>
       </MathJaxContext>
     </div>
