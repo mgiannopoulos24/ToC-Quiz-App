@@ -10,22 +10,22 @@ export const quizzes = [
           {
             text: "\\((\\mathit{A} - \\mathit{Β})\\ \\cup \\mathit{B} = \\mathit{A} \\cup \\mathit{B} \\)",
             correct: false,
-            description: ""
+            description: "TBD"
           },
           {
             text: "\\((\\mathit{A} - \\mathit{Β})\\ \\cap \\mathit{Β} =  \\emptyset \\)",
             correct: false,
-            description: ""
+            description: "TBD"
           },
           {
             text: "\\((\\mathit{A} - \\mathit{Β}) \\iff \(\\mathit{A} - \\mathit{B} = \\mathit{B} - \\mathit{A})\\)",
             correct: false,
-            description: ""
+            description: "TBD"
           },
           {
             "text": "\\((\\mathit{A} - \\mathit{B} = \\mathit{A}) \\iff (\\mathit{A} \\cap \\mathit{B} = \\emptyset)\\)",
             correct: false,
-            description: ""
+            description: "TBD"
           },
           {
             text: "Όλες οι προηγούμενες προτάσεις είναι λάθος.",
