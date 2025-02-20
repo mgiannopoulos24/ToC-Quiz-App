@@ -25,6 +25,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   useEffect(() => {
     if (!isOpen) {
       setSelectedAnswer(null);
+      setCurrentQuestion(0); // Reset to the first question when the dialog is closed
     }
   }, [isOpen]);
 
@@ -60,6 +61,20 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
     return "border border-gray-300 p-4 rounded-lg mb-2 opacity-50";
   };
 
+  const goToNextQuestion = () => {
+    setSelectedAnswer(null);
+    if (currentQuestion < quiz.questions.length - 1) {
+      setCurrentQuestion(currentQuestion + 1);
+    }
+  };
+
+  const goToPreviousQuestion = () => {
+    setSelectedAnswer(null);
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
+    }
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
       <MathJaxContext>
@@ -74,11 +89,11 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             </button>
           </div>
 
-          <div className="mb-6">
+          <div className="mb-6 max-h-48 overflow-y-auto">
             <MathJax>{question.question}</MathJax>
           </div>
 
-          <div className="space-y-2">
+          <div className="space-y-2 max-h-96 overflow-y-auto">
             {question.answers.map((answer, index) => (
               <div key={index}>
                 <div
@@ -114,6 +129,23 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
                 )}
               </div>
             ))}
+          </div>
+
+          <div className="flex justify-between mt-6">
+            <button
+              onClick={goToPreviousQuestion}
+              disabled={currentQuestion === 0}
+              className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg disabled:opacity-50"
+            >
+              Προηγούμενη
+            </button>
+            <button
+              onClick={goToNextQuestion}
+              disabled={currentQuestion === quiz.questions.length - 1}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50"
+            >
+              Επόμενη
+            </button>
           </div>
         </div>
       </MathJaxContext>
