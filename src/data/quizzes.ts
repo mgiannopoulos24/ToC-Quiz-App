@@ -35,5 +35,92 @@ export const quizzes = [
         ]
       }
     ]
+  },
+  {
+    id:"theory-of-computation",
+    title: "Μάθημα 2",
+    description:"",
+    questions: [
+      {
+        question: "Έστω το αλφάβητο \\(\\mathit{Σ}\\) και γλώσσα \\(\\mathit{L}\\subset\\mathit{Σ^*} \\). Ποιό από τα παρακάτω είναι σωστό;",
+        answers: [
+          {
+            text: "\\( (\\ \\mathit{L^*})^*\\ \\subset \\mathit{L^*} \\)",
+            correct: false,
+            description: "TBD"
+          },
+          {
+            text: "\\( \\mathit{L^*} \\subset (\\ \\mathit{L^*})^*\\ \\)",
+            correct: false,
+            description: "TBD"
+          },
+          {
+            text: "\\( \\mathit{L^*} = (\\ \\mathit{L^*})^*\\ \\)",
+            correct: true,
+            description: "TBD"
+          },
+          {
+            text: "\\( \\mathit{L^*} \\neq (\\ \\mathit{L^*})^*\\ \\)",
+            correct: false,
+            description: "TBD"
+          },
+          {
+            text: "Κανένα από τα προηγούμενα.",
+            correct: false,
+            description: "TBD"
+          }
+        ]
+      },
+      {
+        question: "Πόσες συμβολοσειρές \\(\\mathit{w} \\in \\{\\mathit{a},\\mathit{b} \\} \\) υπάρχουν τέτοιες ώστε να ισχύει \\(\\mathit{aw} = \\mathit{bw}\\) ;",
+        answers: [
+          {
+            text: "Καμία",
+            correct: true,
+            description: "TBD"
+          },
+          {
+            text: "Μία",
+            correct: false,
+            description: "TBD"
+          },
+          {
+            text: "Δύο",
+            correct: false,
+            description: "TBD"
+          },
+          {
+            text: "Άπειρες",
+            correct: false,
+            description: "TBD"
+          }
+        ]
+      },
+      {
+        question: "Έστω το σύνολο \\( \\mathit{A} \\) είναι ισάριθμο με το \\( \\mathbb{N} \\). Ποιό από τα παρακάτω ισχύει;",
+        answers: [
+          {
+            text: "Υπάρχει πάντα κλειστός τύπος που μας δίνει την αμφιμονοσήμαντη αντιστοιχία ανάμεσα στο \\( \\mathit{A} \\) και το \\( \\mathbb{N} \\).",
+            correct: false,
+            description: "TBD"
+          },
+          {
+            text: "Αν \\( \\mathit{A} \\subseteq \\mathbb{N} \\) τότε υπάρχει πάντα κλειστός τύπος που μας δίνει την αμφιμονοσήμαντη αντιστοιχία ανάμεσα στο \\( \\mathit{A} \\) και το \\( \\mathbb{N} \\).",
+            correct: false,
+            description: "TBD"
+          },
+          {
+            text: "Δεν υπάρχει πάντα κλειστός τύπος που μας δίνει την αμφιμονοσήματνη αντιστοιχία ανάμεσα στο \\( \\mathit{A} \\) και το \\( \\mathbb{N} \\).",
+            correct: true,
+            description: "TBD"
+          },
+          {
+            text: "Είναι ανοιχτό πρόβλημα το αν υπάρχει πάντα κλειστός τύπος που μας δίνει την αμφιμονοσήμαντη αντιστοιχία ανάμεσα στο \\( \\mathit{A} \\) και το \\( \\mathbb{N} \\).",
+            correct: false,
+            description: "TBD"
+          }
+        ]
+      }
+    ]
   }
 ];
