@@ -77,7 +77,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
 
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
-      <MathJaxContext>
+      <MathJaxContext key={currentQuestion}>
         <div className="bg-white rounded-xl max-w-2xl w-full p-6">
           <div className="flex justify-between items-center mb-6">
             <h3 className="text-xl font-bold">{currentQuestion + 1}/{quiz.questions.length} {quiz.questions.length === 1 ? 'ερώτηση' : 'ερωτήσεις'}</h3>
