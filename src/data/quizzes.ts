@@ -1,6 +1,6 @@
 export const quizzes = [
   {
-    id: "theory-of-computation",
+    id: "quiz-1",
     title: "Μάθημα 1",
     description: "",
     questions: [
@@ -37,7 +37,7 @@ export const quizzes = [
     ]
   },
   {
-    id:"theory-of-computation",
+    id:"quiz-2",
     title: "Μάθημα 2",
     description:"",
     questions: [
