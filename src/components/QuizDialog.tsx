@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
 import { ChevronDown, ChevronUp, X } from 'lucide-react';
 import { Quiz } from '../types';

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Play } from 'lucide-react';
 import { Quiz } from '../types';
 import QuizDialog from './QuizDialog';
