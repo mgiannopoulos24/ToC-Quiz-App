@@ -1,4 +1,4 @@
-# ToC-Quiz-App
+# [ToC-Quiz-App](https://toc-quizzes.netlify.app/)
 Μια web εφαρμογή που συλλέγει όλα τα quizzes που δόθηκαν στο μάθημα Θεωρία Υπολογισμού (Κ25) του DIT ΕΚΠΑ.
 
 ## To-Do
