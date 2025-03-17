@@ -30,7 +30,7 @@
       ]
     },
     {
-      "question": "Πόσες συμβολοσειρές \\(\\mathit{w} \\in \\{\\mathit{a},\\mathit{b} \\} \\) υπάρχουν τέτοιες ώστε να ισχύει \\(\\mathit{aw} = \\mathit{bw}\\) ;",
+      "question": "Πόσες συμβολοσειρές \\(\\mathit{w} \\in \\{\\mathit{a},\\mathit{b} \\}^* \\) υπάρχουν τέτοιες ώστε να ισχύει \\(\\mathit{aw} = \\mathit{bw}\\) ;",
       "answers": [
         {
           "text": "Καμία",
