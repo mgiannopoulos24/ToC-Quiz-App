@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
 import { ChevronDown, ChevronUp, X } from 'lucide-react';
 import { Quiz } from '../types';
+import { loadImage } from '../utils/loadImage'; 
 
 interface QuizDialogProps {
   quiz: Quiz;
@@ -13,21 +14,32 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [expandedAnswers, setExpandedAnswers] = useState<boolean[]>([]);
+  const [currentImage, setCurrentImage] = useState<string | null>(null); // State for the current image
 
   useEffect(() => {
-    // Initialize expandedAnswers with all values set to false
     if (quiz.questions[currentQuestion]) {
       setExpandedAnswers(new Array(quiz.questions[currentQuestion].answers.length).fill(false));
     }
   }, [currentQuestion, quiz]);
 
-  // Reset states when dialog is closed
   useEffect(() => {
     if (!isOpen) {
       setSelectedAnswer(null);
-      setCurrentQuestion(0); // Reset to the first question when the dialog is closed
+      setCurrentQuestion(0);
     }
   }, [isOpen]);
+
+  // Load the image dynamically when the question changes
+  useEffect(() => {
+    const question = quiz.questions[currentQuestion];
+    if (question.image) {
+      loadImage(question.image).then((image) => {
+        setCurrentImage(image);
+      });
+    } else {
+      setCurrentImage(null);
+    }
+  }, [currentQuestion, quiz]);
 
   if (!isOpen) return null;
 
@@ -35,7 +47,6 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
 
   const handleAnswerClick = (index: number) => {
     setSelectedAnswer(index);
-    // Toggle the expanded state for the clicked answer
     setExpandedAnswers(prev => {
       const newState = [...prev];
       newState[index] = !newState[index];
@@ -75,6 +86,15 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
     }
   };
 
+  const renderWithNewlines = (text: string) => {
+    return text.split('\n').map((line, index) => (
+      <span key={index}>
+        {line}
+        <br />
+      </span>
+    ));
+  };
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
       <MathJaxContext key={currentQuestion}>
@@ -89,8 +109,18 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             </button>
           </div>
 
-          <div className="mb-6 max-h-48 overflow-y-auto">
-            <MathJax>{question.question}</MathJax>
+          <div className="mb-6 max-h-60 overflow-y-auto">
+            <MathJax>{renderWithNewlines(question.question)}</MathJax>
+            {currentImage && (
+              <div className="flex justify-center mt-4">
+                <img 
+                  src={currentImage} 
+                  alt="Question Illustration" 
+                  className="rounded-lg max-w-full h-auto" 
+                  style={{ maxHeight: '300px' }} 
+                />
+              </div>
+            )}
           </div>
 
           <div className="space-y-2 max-h-96 overflow-y-auto">
@@ -100,7 +130,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
                   onClick={() => handleAnswerClick(index)}
                   className={getAnswerClassName(index)}
                 >
-                  <MathJax>{answer.text}</MathJax>
+                  <MathJax>{renderWithNewlines(answer.text)}</MathJax>
                 </div>
                 {selectedAnswer !== null && (
                   <div className="mt-4">
@@ -121,7 +151,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
                     {expandedAnswers[index] && (
                       <div className="mt-2 p-4 bg-gray-50 rounded-lg">
                         <MathJax>
-                          {answer.description}
+                          {renderWithNewlines(answer.description)}
                         </MathJax>
                       </div>
                     )}
