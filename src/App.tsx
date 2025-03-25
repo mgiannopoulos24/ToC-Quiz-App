@@ -12,6 +12,9 @@ function App() {
             <QuizCard key={quiz.id} quiz={quiz} />
           ))}
         </div>
+        <div className="text-center mt-8">
+          <p className="font-bold text-gray-700">ΠΡΟΣΟΧΗ. Μερικές από τις εξηγήσεις είναι ΑΙ-generated.</p>
+        </div>
       </div>
     </div>
   );
