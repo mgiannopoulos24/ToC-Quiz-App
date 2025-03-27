@@ -1,0 +1,27 @@
+[
+    {
+        "question": "Στο Λήμμα Άντλησης, υπάρχει η συνθήκη \\( \\lvert \\mathit{xy} \\rvert \\leq \\mathit{w} \\). Το δεδομένο της απόδειξης το οποίο είναι ο πιο ισχυρός λόγος που εξασφαλίζει ότι η συνθήκη αυτή ισχύει, είναι το:",
+        "answers":[
+            {
+                "text": "\\( \\mathit{w} \\in \\mathit{L} \\)",
+                "correct": false,
+                "description": ""
+            },
+            {
+                "text": "\\( \\mathit{y} \\neq \\varepsilon \\)",
+                "correct": false,
+                "description": ""
+            },
+            {
+                "text": "\\( \\mathit{j} \\leq \\mathit{n} \\)",
+                "correct": true,
+                "description": ""
+            },
+            {
+                "text": "\\( \\mathit{xy}^i \\mathit{z} \\in \\mathit{L} \\)",
+                "correct": false,
+                "description": ""
+            }
+        ]
+    }
+]
