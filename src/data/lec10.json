@@ -1,0 +1,27 @@
+[
+    {
+        "question": "Έστω \\( \\mathit{L} = \\{ \\mathit{a}^{i} \\mathit{b}^{j} \\lvert \\mathit{i} \\gt \\mathit{j} \\} \\cup \\{ \\mathit{a}^{i} \\mathit{b}^{j} \\lvert \\mathit{i} \\lt \\mathit{j} \\} \\). Για την \\( \\mathit{L} \\) ισχύει ένα από τα ακόλουθα (και είμαι έτοιμος να το αιτιολογήσω αν ρωτηθώ σχετικά):",
+        "answers":[
+            {
+                "text": "Η \\( \\mathit{L} \\) είναι κανονική και μπορώ να το αποδείξω με το Λήμμα Άντλησης διαλέγοντας \\( \\mathit{w} = \\mathit{a}^{n} \\mathit{b}^{n+1} \\) ή \\( \\mathit{w} = \\mathit{a}^{n+1} \\mathit{b}^{n} \\).",
+                "correct": false,
+                "description": ""
+            },
+            {
+                "text": "Η \\( \\mathit{L} \\) δεν είναι κανονική γιατί είναι ένωση δύο μη κανονικών γλωσσών.",
+                "correct": false,
+                "description": ""
+            },
+            {
+                "text": "Η \\( \\mathit{L} \\) δεν είναι κανονική και μπορώ να το αποδείξω με ένα έξυπνο τρικ που σκέφτηκα.",
+                "correct": true,
+                "description": ""
+            },
+            {
+                "text": "Η \\( \\mathit{L} \\) είναι κανονική.",
+                "correct": false,
+                "description": ""
+            }
+        ]
+    }
+]
