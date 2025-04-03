@@ -1,27 +1,27 @@
 [
-    {
-        "question": "Δίνεται η γραμματική \\( \\mathit{G} \\) με τους κανόνες: \\[ S \\rightarrow aB \\] \\[B \\rightarrow bS \\] Ποιά από τις παρακάτω προτάσεις είναι σωστή;",
-        "answers": [
-            {
-                "text": "\\( \\mathit{ab} \\in \\mathit{L(G)} \\)",
-                "correct": false,
-                "description": ""
-            },
-            {
-                "text": "\\( \\mathit{ababab} \\dots \\in \\mathit{L(G)} \\)",
-                "correct": false,
-                "description": ""
-            },
-            {
-                "text": "Το συμπλήρωμα της \\( \\mathit{L(G)} \\) είναι κανονική γλώσσα.",
-                "correct": true,
-                "description": ""
-            },
-            {
-                "text": "Η \\( \\mathit{L(G)} \\) δεν είναι κανονική γλώσσα.",
-                "correct": false,
-                "description": ""
-            }
-        ]
-    }
+  {
+    "question": "Δίνεται η γραμματική \\( \\mathit{G} \\) με τους κανόνες: \\[ S \\rightarrow aB \\] \\[B \\rightarrow bS \\] Ποιά από τις παρακάτω προτάσεις είναι σωστή;",
+    "answers": [
+      {
+        "text": "\\( \\mathit{ab} \\in \\mathit{L(G)} \\)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "\\( \\mathit{ababab} \\dots \\in \\mathit{L(G)} \\)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "Το συμπλήρωμα της \\( \\mathit{L(G)} \\) είναι κανονική γλώσσα.",
+        "correct": true,
+        "description": ""
+      },
+      {
+        "text": "Η \\( \\mathit{L(G)} \\) δεν είναι κανονική γλώσσα.",
+        "correct": false,
+        "description": ""
+      }
+    ]
+  }
 ]

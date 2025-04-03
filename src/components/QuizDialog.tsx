@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
+import { Quiz } from '../types';
+import { loadImage } from '../utils/loadImage';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
 import { ChevronDown, ChevronUp, X } from 'lucide-react';
-import { Quiz } from '../types';
-import { loadImage } from '../utils/loadImage'; 
+import { useEffect, useState } from 'react';
 
 interface QuizDialogProps {
   quiz: Quiz;
@@ -47,7 +47,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
 
   const handleAnswerClick = (index: number) => {
     setSelectedAnswer(index);
-    setExpandedAnswers(prev => {
+    setExpandedAnswers((prev) => {
       const newState = [...prev];
       newState[index] = !newState[index];
       return newState;
@@ -61,15 +61,15 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
 
   const getAnswerClassName = (index: number) => {
     if (selectedAnswer === null) {
-      return "border border-gray-300 p-4 rounded-lg mb-2 hover:bg-gray-50 cursor-pointer";
+      return 'border border-gray-300 p-4 rounded-lg mb-2 hover:bg-gray-50 cursor-pointer';
     }
     if (question.answers[index].correct) {
-      return "border border-green-500 bg-green-50 p-4 rounded-lg mb-2";
+      return 'border border-green-500 bg-green-50 p-4 rounded-lg mb-2';
     }
     if (index === selectedAnswer && !question.answers[index].correct) {
-      return "border border-red-500 bg-red-50 p-4 rounded-lg mb-2";
+      return 'border border-red-500 bg-red-50 p-4 rounded-lg mb-2';
     }
-    return "border border-gray-300 p-4 rounded-lg mb-2 opacity-50";
+    return 'border border-gray-300 p-4 rounded-lg mb-2 opacity-50';
   };
 
   const goToNextQuestion = () => {
@@ -96,15 +96,15 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   };
 
   return (
-    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center p-4">
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
       <MathJaxContext key={currentQuestion}>
-        <div className="bg-white rounded-xl max-w-2xl w-full p-6">
-          <div className="flex justify-between items-center mb-6">
-            <h3 className="text-xl font-bold">{currentQuestion + 1}/{quiz.questions.length} {quiz.questions.length === 1 ? 'ερώτηση' : 'ερωτήσεις'}</h3>
-            <button
-              onClick={handleClose}
-              className="text-gray-500 hover:text-gray-700"
-            >
+        <div className="w-full max-w-2xl rounded-xl bg-white p-6">
+          <div className="mb-6 flex items-center justify-between">
+            <h3 className="text-xl font-bold">
+              {currentQuestion + 1}/{quiz.questions.length}{' '}
+              {quiz.questions.length === 1 ? 'ερώτηση' : 'ερωτήσεις'}
+            </h3>
+            <button onClick={handleClose} className="text-gray-500 hover:text-gray-700">
               <X size={24} />
             </button>
           </div>
@@ -112,31 +112,28 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
           <div className="mb-6 max-h-60 overflow-y-auto">
             <MathJax>{renderWithNewlines(question.question)}</MathJax>
             {currentImage && (
-              <div className="flex justify-center mt-4">
-                <img 
-                  src={currentImage} 
-                  alt="Question Illustration" 
-                  className="rounded-lg max-w-full h-auto" 
-                  style={{ maxHeight: '300px' }} 
+              <div className="mt-4 flex justify-center">
+                <img
+                  src={currentImage}
+                  alt="Question Illustration"
+                  className="h-auto max-w-full rounded-lg"
+                  style={{ maxHeight: '300px' }}
                 />
               </div>
             )}
           </div>
 
-          <div className="space-y-2 max-h-96 overflow-y-auto">
+          <div className="max-h-96 space-y-2 overflow-y-auto">
             {question.answers.map((answer, index) => (
               <div key={index}>
-                <div
-                  onClick={() => handleAnswerClick(index)}
-                  className={getAnswerClassName(index)}
-                >
+                <div onClick={() => handleAnswerClick(index)} className={getAnswerClassName(index)}>
                   <MathJax>{renderWithNewlines(answer.text)}</MathJax>
                 </div>
                 {selectedAnswer !== null && (
                   <div className="mt-4">
                     <button
                       onClick={() => {
-                        setExpandedAnswers(prev => {
+                        setExpandedAnswers((prev) => {
                           const newState = [...prev];
                           newState[index] = !newState[index];
                           return newState;
@@ -145,14 +142,12 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
                       className="flex items-center gap-2 text-blue-600 hover:text-blue-700"
                     >
                       {expandedAnswers[index] ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                      {expandedAnswers[index] ? "Κρύψε την" : "Δείξε την"} εξήγηση
+                      {expandedAnswers[index] ? 'Κρύψε την' : 'Δείξε την'} εξήγηση
                     </button>
 
                     {expandedAnswers[index] && (
-                      <div className="mt-2 p-4 bg-gray-50 rounded-lg">
-                        <MathJax>
-                          {renderWithNewlines(answer.description)}
-                        </MathJax>
+                      <div className="mt-2 rounded-lg bg-gray-50 p-4">
+                        <MathJax>{renderWithNewlines(answer.description)}</MathJax>
                       </div>
                     )}
                   </div>
@@ -161,18 +156,18 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             ))}
           </div>
 
-          <div className="flex justify-between mt-6">
+          <div className="mt-6 flex justify-between">
             <button
               onClick={goToPreviousQuestion}
               disabled={currentQuestion === 0}
-              className="bg-gray-200 hover:bg-gray-300 text-gray-700 px-4 py-2 rounded-lg disabled:opacity-50"
+              className="rounded-lg bg-gray-200 px-4 py-2 text-gray-700 hover:bg-gray-300 disabled:opacity-50"
             >
               Προηγούμενη
             </button>
             <button
               onClick={goToNextQuestion}
               disabled={currentQuestion === quiz.questions.length - 1}
-              className="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg disabled:opacity-50"
+              className="rounded-lg bg-blue-600 px-4 py-2 text-white hover:bg-blue-700 disabled:opacity-50"
             >
               Επόμενη
             </button>

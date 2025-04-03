@@ -1,32 +1,32 @@
 [
-    {
-        "question": "Έστω \\( \\mathrm{Σ} = \\{ a_1, \\dots, a_n \\} \\). Έστω η γλώσσα: \\[ \\mathit{L} = \\{ \\mathit{w} \\in \\mathrm{Σ}^* \\lvert \\text{ υπάρχει σύμβολο } a_i \\in \\mathrm{Σ} \\text{ που δεν εμφανίζεται στη } \\mathit{w} \\} \\] Υπάρχει μη ντετερμινιστικό πεπερασμένο αυτόματο που περιγράφει την \\( \\mathit{L} \\) και έχει \\( \\mathit{n} + 1 \\) καταστάσεις. Ποια είναι η πιο ακριβής τάξη μεγέθους του αριθμού των καταστάσεων του ελάχιστου ντετερμινιστικού αυτόματου που περιγράφει την \\( \\mathit{L} \\);",
-        "answers": [
-            {
-                "text": "\\( \\mathit{O}(n) \\)",
-                "correct": false,
-                "description": ""
-            },
-            {
-                "text": "\\( \\mathit{O}(n^2) \\)",
-                "correct": false,
-                "description": ""
-            },
-            {
-                "text": "\\( \\mathit{O}(n^3) \\)",
-                "correct": false,
-                "description": ""
-            },
-            {
-                "text": "\\( \\mathit{O}(2^n) \\)",
-                "correct": true,
-                "description": ""
-            },
-            {
-                "text": "\\( \\mathit{O}(2^{2^{n}}) \\)",
-                "correct": false,
-                "description": ""
-            }
-        ]
-    }
+  {
+    "question": "Έστω \\( \\mathrm{Σ} = \\{ a_1, \\dots, a_n \\} \\). Έστω η γλώσσα: \\[ \\mathit{L} = \\{ \\mathit{w} \\in \\mathrm{Σ}^* \\lvert \\text{ υπάρχει σύμβολο } a_i \\in \\mathrm{Σ} \\text{ που δεν εμφανίζεται στη } \\mathit{w} \\} \\] Υπάρχει μη ντετερμινιστικό πεπερασμένο αυτόματο που περιγράφει την \\( \\mathit{L} \\) και έχει \\( \\mathit{n} + 1 \\) καταστάσεις. Ποια είναι η πιο ακριβής τάξη μεγέθους του αριθμού των καταστάσεων του ελάχιστου ντετερμινιστικού αυτόματου που περιγράφει την \\( \\mathit{L} \\);",
+    "answers": [
+      {
+        "text": "\\( \\mathit{O}(n) \\)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "\\( \\mathit{O}(n^2) \\)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "\\( \\mathit{O}(n^3) \\)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "\\( \\mathit{O}(2^n) \\)",
+        "correct": true,
+        "description": ""
+      },
+      {
+        "text": "\\( \\mathit{O}(2^{2^{n}}) \\)",
+        "correct": false,
+        "description": ""
+      }
+    ]
+  }
 ]
