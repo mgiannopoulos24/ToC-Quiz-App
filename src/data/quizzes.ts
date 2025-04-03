@@ -8,6 +8,7 @@ import lec7 from './lec7.json';
 import lec8 from './lec8.json';
 import lec9 from './lec9.json';
 import lec10 from './lec10.json';
+import lec11 from './lec11.json';
 
 export const quizzes = [
   {
@@ -69,5 +70,11 @@ export const quizzes = [
     title: "Μάθημα 10",
     description: "",
     questions: lec10
+  },
+  {
+    id: "quiz-11",
+    title: "Μάθημα 11",
+    description: "",
+    questions: lec11
   }
 ];
