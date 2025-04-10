@@ -123,7 +123,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             )}
           </div>
 
-          <div className="max-h-96 space-y-2 overflow-y-auto">
+          <div className="max-h-40 space-y-1 overflow-y-auto">
             {question.answers.map((answer, index) => (
               <div key={index}>
                 <div onClick={() => handleAnswerClick(index)} className={getAnswerClassName(index)}>
