@@ -1,0 +1,77 @@
+[
+  {
+    "question": "Έστω η γλώσσα \\( \\mathit{L} = \\{ a^mb^n \\mid m \\neq n \\} \\). Ποιο από τα παρακάτω είναι σωστό:",
+    "answers": [
+      {
+        "text": "Η \\( \\mathit{L} \\) είναι χωρίς συμφραζόμενα γιατί είναι το συμπλήρωμα μιας κανονικής γλώσσας.",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "Η \\( \\mathit{L} \\) είναι χωρίς συμφραζόμενα γιατί είναι το συμπλήρωμα της \\( \\{ a^nb^n \\mid n \\geq 0 \\} \\), που είναι χωρίς συμφραζόμενα.",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "Η \\( \\mathit{L} \\) είναι χωρίς συμφραζόμενα γιατί είναι η ένωση δύ γλωσσών που είναι και οι δύο χωρίς συμφραζόμενα.",
+        "correct": true,
+        "description": ""
+      },
+      {
+        "text": "Η \\( \\mathit{L} \\) δεν είναι χωρίς συμφραζόμενα.",
+        "correct": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "question": "Έστω \\( \\mathit{L} \\) μια γλώσσα χωρίς συμφραζόμενα και \\( \\mathit{R} \\) μια κανονική γλώσσα. Ποια από τις παρακάτω προτάσεις είναι λανθασμένη; Θυμίζουμε ότι \\( \\mathit{A} - \\mathit{B} = \\{ \\mathit{x} \\mid \\mathit{x} \\in \\mathit{A} \\land \\mathit{x} \\notin \\mathit{B} \\} \\).",
+    "answers": [
+      {
+        "text": "Η γλώσσα \\( \\mathit{L} - \\mathit{R} \\) είναι πάντα χωρίς συμφραζόμενα.",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "Η γλώσσα \\( \\mathit{R} - \\mathit{L} \\) είναι πάντα χωρίς συμφραζόμενα.",
+        "correct": true,
+        "description": ""
+      },
+      {
+        "text": "Η γλώσσα \\( \\mathit{R} \\cap \\mathit{L} \\) είναι πάντα χωρίς συμφραζόμενα.",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "Η γλώσσα \\( \\overline{\\mathit{R}} \\cup \\mathit{L} \\) είναι πάντα χωρίς συμφραζόμενα.",
+        "correct": false,
+        "description": ""
+      }
+    ]
+  },
+  {
+    "question": "Έστω οι γλώσσες: \\[ \\mathit{L_1} = \\{ 0^n1^n0^n1^n \\mid n \\geq 0 \\} \\] \\[ \\mathit{L_2} = \\{ 0^n \\# 0^{2n} \\# 0^{3n} \\mid n \\geq 0 \\} \\] Ποιο από τα παρακάτω είναι αληθές;",
+    "answers": [
+      {
+        "text": "Ούτε η \\( \\mathit{L_1} \\) ούτε η \\( \\mathit{L_2} \\) είναι χωρίς συμφραζόμενα.",
+        "correct": true,
+        "description": ""
+      },
+      {
+        "text": "Η \\( \\mathit{L_1} \\) δεν είναι χωρίς συμφραζόμενα αλλά η \\( \\mathit{L_2} \\) είναι χωρίς συμφραζόμενα.",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "Η \\( \\mathit{L_1} \\) είναι χωρίς συμφραζόμενα αλλά η \\( \\mathit{L_2} \\) δεν είναι χωρίς συμφραζόμενα.",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "Και η \\( \\mathit{L_1} \\) αλλά και η \\( \\mathit{L_2} \\) είναι χωρίς συμφραζόμενα.",
+        "correct": false,
+        "description": ""
+      }
+    ]
+  }
+]
