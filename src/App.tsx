@@ -1,6 +1,5 @@
 import QuizCard from './components/QuizCard';
-import { quizzes } from './data/quizzes';
-import React from 'react';
+import { quizzes } from './utils/quizzes';
 
 function App() {
   return (
