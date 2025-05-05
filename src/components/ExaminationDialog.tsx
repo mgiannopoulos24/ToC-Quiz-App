@@ -53,8 +53,8 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
           .then((image) => {
             setCurrentImage(image);
           })
-          .catch(error => {
-            console.error("Error loading image:", error);
+          .catch((error) => {
+            console.error('Error loading image:', error);
             setCurrentImage(null); // Ensure image is null on error
           });
       }
@@ -118,7 +118,8 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
   const getAnswerClassName = (index: number) => {
     const isSelected = selectedAnswers[currentQuestionIndex] === index;
 
-    if (score !== null) { // After finishing
+    if (score !== null) {
+      // After finishing
       const isCorrect = currentQuestion.answers[index].correct;
       if (isCorrect) {
         return 'border border-green-500 bg-green-50 p-4 rounded-lg mb-2'; // Correct answer
@@ -127,7 +128,8 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
         return 'border border-red-500 bg-red-50 p-4 rounded-lg mb-2'; // Incorrectly selected
       }
       return 'border border-gray-300 p-4 rounded-lg mb-2 opacity-50'; // Other answers
-    } else { // During exam
+    } else {
+      // During exam
       if (isSelected) {
         return 'border border-blue-500 bg-blue-50 p-4 rounded-lg mb-2 cursor-pointer'; // Selected
       }
@@ -172,19 +174,19 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
               </h3>
               <div className="mb-4 max-h-40 overflow-y-auto rounded border p-3 sm:max-h-48">
                 <MathJax dynamic>{renderWithNewlines(currentQuestion.question)}</MathJax>
-                 {currentImage && (
-                   <div className="mt-3 flex justify-center">
-                     <img
-                       src={currentImage}
-                       alt="Question Illustration"
-                       className="h-auto max-w-full rounded-lg"
-                       style={{ maxHeight: '150px' }}
-                     />
-                   </div>
-                 )}
+                {currentImage && (
+                  <div className="mt-3 flex justify-center">
+                    <img
+                      src={currentImage}
+                      alt="Question Illustration"
+                      className="h-auto max-w-full rounded-lg"
+                      style={{ maxHeight: '150px' }}
+                    />
+                  </div>
+                )}
               </div>
 
-              <div className="max-h-56 space-y-2 overflow-y-auto pr-2 sm:max-h-64">
+              <div className="max-h-65 space-y-2 overflow-y-auto pr-2 sm:max-h-64">
                 {currentQuestion.answers.map((answer, index) => (
                   <div
                     key={`${currentQuestionIndex}-${index}`}

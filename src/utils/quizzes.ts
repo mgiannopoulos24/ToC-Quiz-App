@@ -12,6 +12,9 @@ import lec11 from '../data/lec11.json';
 import lec12 from '../data/lec12.json';
 import lec13 from '../data/lec13.json';
 import lec14 from '../data/lec14.json';
+import lec15 from '../data/lec15.json';
+
+// import mega from '../data/mega.json';
 
 export const quizzes = [
   {
@@ -98,4 +101,16 @@ export const quizzes = [
     description: '',
     questions: lec14,
   },
+  {
+    id: 'quiz-15',
+    title: 'Μάθημα 15',
+    description: '',
+    questions: lec15,
+  },
+  // {
+  //   id: 'mega-quiz-1',
+  //   title: 'Mega Quiz 2025',
+  //   description: 'Balls',
+  //   questions: mega,
+  // }
 ];
