@@ -1,0 +1,39 @@
+\documentclass[border=3mm]{standalone}
+\usepackage{tikz}
+\usetikzlibrary{arrows, automata, positioning, calc}
+
+\begin{document}
+
+\begin{tikzpicture}[
+    node distance=2.0cm,
+    on grid,
+    auto,
+    state/.style={minimum size=0.7cm},
+    every node/.style={font=\small}
+]
+
+% States/nodes
+\node[state,] (q0) {$>L$};
+\node[state] (q1) [right=of q0] {$\sqcup R_{\sqcup} a L_{\sqcup}a$};
+\node[state] (q2) [below=of q0] {$R_{\sqcup}$};
+
+% Some extrac coords
+\coordinate (q1right) at ($(q1) + (1.5cm, 0)$);
+\coordinate (q1top) at ($(q1right) + (0, 1.5cm)$);
+\coordinate (q0top) at ($(q0) + (0, 1.5cm)$);
+
+%Transitions/edges
+\draw[->] (q0) -- node[above] {$a \neq \sqcup$} (q1);
+\draw[->] (q0) -- node[right] {$\sqcup$} (q2);
+\draw[-] (q1)  -- (q1right);
+\draw[-] (q1right) -- (q1top);
+\draw[-] (q1top) -- (q0top);
+\draw[->] (q0top) -- (q0);
+
+
+% \draw[->] ([yshift=0.5cm]q0.north) -- ([yshift=0.5cm]q0.north -| q0.west);
+% \draw[->] ([yshift=0.5cm]q0.north -| q0.west) -- (q0);
+
+\end{tikzpicture}
+
+\end{document}

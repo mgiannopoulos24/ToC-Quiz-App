@@ -1,0 +1,33 @@
+[
+  {
+    "question": "Έστω ότι ξεκινάμε τη μηχανή Turing που βλέπετε στο σχήμα και έστω ότι η ταινία περιέχει \\( > \\sqcup cbb \\underline{\\sqcup} \\). Όταν ολοκληρωθεί η εκτέλεση της μηχανής, σε ποιά κατάσταση θα βρίσκεται η ταινία;",
+    "image": "quiz28",
+    "answers": [
+      {
+        "text": "\\( > \\sqcup cbb \\underline{\\sqcup}\\)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "\\( > \\sqcup \\sqcup cbb \\underline{\\sqcup}\\)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "\\( > \\sqcup cbbbbc \\underline{\\sqcup}\\)",
+        "correct": true,
+        "description": ""
+      },
+      {
+        "text": "\\( > \\sqcup cbbacbb \\underline{\\sqcup}\\)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "Κανένα από τα προηγούμενα.",
+        "correct": false,
+        "description": ""
+      }
+    ]
+  }
+]
