@@ -173,7 +173,9 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
                 Ερώτηση {currentQuestionIndex + 1} από {examQuestions.length}
               </h3>
               <div className="mb-4 max-h-40 overflow-y-auto rounded border p-3 sm:max-h-48">
-                <MathJax dynamic>{renderWithNewlines(currentQuestion.question)}</MathJax>
+                <MathJax dynamic key={`mathjax-question-${currentQuestionIndex}`}>
+                  {renderWithNewlines(currentQuestion.question)}
+                </MathJax>
                 {currentImage && (
                   <div className="mt-3 flex justify-center">
                     <img
@@ -193,7 +195,9 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
                     onClick={() => handleAnswerClick(index)}
                     className={getAnswerClassName(index)}
                   >
-                    <MathJax dynamic>{renderWithNewlines(answer.text)}</MathJax>
+                    <MathJax dynamic key={`mathjax-answer-${currentQuestionIndex}-${index}`}>
+                      {renderWithNewlines(answer.text)}
+                    </MathJax>
                   </div>
                 ))}
               </div>
