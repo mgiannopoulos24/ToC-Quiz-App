@@ -14,6 +14,7 @@ import lec13 from '../data/lec13.json';
 import lec14 from '../data/lec14.json';
 import lec15 from '../data/lec15.json';
 import lec16 from '../data/lec16.json';
+import lec17 from '../data/lec17.json';
 
 // import mega from '../data/mega.json';
 
@@ -113,6 +114,12 @@ export const quizzes = [
     title: 'Μάθημα 16',
     description: '',
     questions: lec16,
+  },
+  {
+    id: 'quiz-17',
+    title: 'Μάθημα 17',
+    description: '',
+    questions: lec17,
   },
   // {
   //   id: 'mega-quiz-1',
