@@ -1,0 +1,40 @@
+[
+  {
+    "question": "Έστω η ακόλουθη κανονική έκφραση: \\( c^* (a \\cup bbc)^*cba^*\\). Ποιες από τις παρακάτω συμβολοσειρές \\(\\underline{\\text{δεν παράγονται}} \\) από αυτήν;",
+    "answers": [
+      {
+        "text": "\\(aaacba\\)",
+        "correct": false,
+        "description": "1. \\(\\underline{\\epsilon}\\) 2. \\(\\underline{a}\\) \\(\\underline{a}\\) \\(\\underline{a}\\) 3. \\(\\underline{cba}\\)"
+      },
+      {
+        "text": "\\(aabbcbbcacba\\)",
+        "correct": false,
+        "description": "1. \\(\\underline{\\epsilon}\\) 2. \\(\\underline{a}\\) \\(\\underline{a}\\) \\(\\underline{bbc}\\) \\(\\underline{bbc}\\) \\(\\underline{a}\\) 3. \\(\\underline{cba}\\)"
+      },
+      {
+        "text": "\\(ccabbcabbcba\\)",
+        "correct": true,
+        "description": "Η κανονική έκφραση είναι: \\(\\overbrace{c^* }^{\\text{1}}\\) \\(\\overbrace{(a \\cup bbc)^*}^{\\text{2}}\\) \\(\\overbrace{cba^*}^{\\text{3}}\\). Τα τρία μέρη της κανονικής έκφρασης μπορούν να παράγουν: \\[ 1.\\begin{cases}  \\begin{array}{c} \\epsilon \\\\ c \\\\ cc \\\\ \\vdots \\end{array} \\end{cases} \\quad 2. \\begin{cases} a \\quad bbc \\quad \\text{εσωτερικά} \\\\ \\epsilon \\quad \\text{και συνδυασμούς} \\\\ \\quad \\text{από τα παραπάνω} \\end{cases} \\quad 3. \\begin{cases}  \\begin{array}{c} cb \\\\ cba \\\\ cbaa \\\\ \\vdots \\end{array} \\end{cases} \\] Επομένως δεν μπορεί να παραχθεί \\( bbcba\\)."
+      },
+      {
+        "text": "\\(bbcabbccb\\)",
+        "correct": false,
+        "description": "1. \\(\\underline{\\epsilon}\\) 2. \\(\\underline{bbc}\\) \\(\\underline{a}\\) \\(\\underline{bbc}\\) 3. \\(\\underline{cb}\\)"
+      },
+      {
+        "text": "\\(cabbccba\\)",
+        "correct": false,
+        "description": "1. \\(\\underline{c}\\) 2. \\(\\underline{a}\\) \\(\\underline{bbc}\\) 3. \\(\\underline{cba}\\)"
+      }
+    ]
+  },
+  {
+    "question": "Έστω τα παρακάτω σύνολα: \\[  A_1 = \\{ f \\mid f : \\{ 0,1 \\} \\rightarrow \\{ 0,1 \\}\\} \\] \\[ A_2 = \\{f \\mid f : \\mathbb{N} \\rightarrow \\{ 0,1 \\} \\} \\]",
+    "answers": [
+      {
+        "text" :""
+      }
+    ]
+  }
+]

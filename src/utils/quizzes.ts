@@ -17,8 +17,7 @@ import lec16 from '../data/lec16.json';
 import lec17 from '../data/lec17.json';
 import lec18 from '../data/lec18.json';
 import lec19 from '../data/lec19.json';
-
-// import mega from '../data/mega.json';
+import mega2025 from '../data/mega2025.json';
 
 export const quizzes = [
   {
@@ -135,10 +134,10 @@ export const quizzes = [
     description: '',
     questions: lec19,
   },
-  // {
-  //   id: 'mega-quiz-1',
-  //   title: 'Mega Quiz 2025',
-  //   description: 'Balls',
-  //   questions: mega,
-  // }
+  {
+    id: 'mega-quiz-1',
+    title: 'Mega Quiz 2025',
+    description: 'Συγγραφείς: Κωνσταντίνος Αρκούλης, Χρήστος Κόμης, Έλενα Φίλη, Αρίσταρχος Καλούτσας',
+    questions: mega2025,
+  }
 ];
