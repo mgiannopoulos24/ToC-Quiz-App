@@ -188,7 +188,7 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
                 )}
               </div>
 
-              <div className="max-h-65 space-y-2 overflow-y-auto pr-2 sm:max-h-64">
+              <div className="max-h-70 space-y-2 overflow-y-auto pr-2 sm:max-h-64">
                 {currentQuestion.answers.map((answer, index) => (
                   <div
                     key={`${currentQuestionIndex}-${index}`}

@@ -98,7 +98,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
       <MathJaxContext key={currentQuestion}>
-        <div className="w-full max-w-2xl rounded-xl bg-white p-6">
+        <div className="w-full max-w-2xl rounded-xl bg-white p-6 md:max-w-4xl md:p-8">
           <div className="mb-6 flex items-center justify-between">
             <h3 className="text-xl font-bold">
               {currentQuestion + 1}/{quiz.questions.length}{' '}
@@ -109,7 +109,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             </button>
           </div>
 
-          <div className="mb-6 max-h-60 overflow-y-auto">
+          <div className="mb-6 max-h-70 overflow-y-auto md:max-h-80">
             <MathJax>{renderWithNewlines(question.question)}</MathJax>
             {currentImage && (
               <div className="mt-4 flex justify-center">
@@ -123,7 +123,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             )}
           </div>
 
-          <div className="max-h-40 space-y-1 overflow-y-auto">
+          <div className="max-h-60 space-y-1 overflow-y-auto md:max-h-70">
             {question.answers.map((answer, index) => (
               <div key={index}>
                 <div onClick={() => handleAnswerClick(index)} className={getAnswerClassName(index)}>
