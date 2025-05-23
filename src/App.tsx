@@ -23,11 +23,6 @@ function App() {
             <QuizCard key={quiz.id} quiz={quiz} />
           ))}
         </div>
-        <div className="mt-8 text-center">
-          <p className="font-bold text-gray-700">
-            ΠΡΟΣΟΧΗ. Μερικές από τις εξηγήσεις είναι ΑΙ-generated.
-          </p>
-        </div>
       </div>
 
       <ExaminationDialog

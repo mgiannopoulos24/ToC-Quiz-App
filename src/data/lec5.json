@@ -5,27 +5,27 @@
       {
         "text": "\\( \\mathit{cbc} \\)",
         "correct": false,
-        "description": "Παράγεται από την κανονική έκφραση, καθώς μπορεί να προκύψει από το \\( \\mathit{c}^* \\) και το \\( \\mathit{bc}^* \\)."
+        "description": ""
       },
       {
         "text": "\\( \\mathit{abbbc} \\)",
         "correct": false,
-        "description": "Παράγεται από την κανονική έκφραση, καθώς μπορεί να προκύψει από το \\( \\mathit{a} \\) και το \\( \\mathit{bc}^* \\)."
+        "description": ""
       },
       {
         "text": "\\( \\mathit{cbaabbc} \\)",
         "correct": false,
-        "description": "Παράγεται από την κανονική έκφραση, καθώς μπορεί να προκύψει από το \\( \\mathit{c}^* \\) και το \\( \\mathit{a} \\cup (\\mathit{bc}^*) \\)."
+        "description": ""
       },
       {
         "text": "\\( \\mathit{cabbababac} \\)",
         "correct": true,
-        "description": "ΔΕΝ παράγεται από την κανονική έκφραση, καθώς η συμβολοσειρά περιέχει το \"ba\" που δεν επιτρέπεται από την έκφραση."
+        "description": ""
       },
       {
         "text": "\\( \\mathit{cbcbbababbbcbc} \\)",
         "correct": false,
-        "description": "Παράγεται από την κανονική έκφραση, καθώς μπορεί να προκύψει από το \\( \\mathit{c}^* \\) και το \\( \\mathit{a} \\cup (\\mathit{bc}^*) \\)."
+        "description": ""
       }
     ]
   },
@@ -35,22 +35,22 @@
       {
         "text": "\\( \\mathit{baa} \\in \\mathit{a^*b^*a^*b^*} \\)",
         "correct": true,
-        "description": "Η έκφραση \\( \\mathit{a^*b^*a^*b^*} \\) επιτρέπει οποιονδήποτε αριθμό από \\(\\mathit{a}\\) και \\(\\mathit{b}\\) με οποιαδήποτε σειρά, συμπεριλαμβανομένης της συμβολοσειράς \\( \\mathit{baa} \\)."
+        "description": ""
       },
       {
         "text": "\\( \\mathit{b^*a^*} \\cap \\mathit{a^*b^*} = \\{ \\mathit{a^*} \\cup \\mathit{b^*} \\} \\)",
         "correct": true,
-        "description": "Η τομή \\( \\mathit{b^*a^*} \\) και \\( \\mathit{a^*b^*} \\) περιέχει μόνο τις συμβολοσειρές που ανήκουν και στις δύο γλώσσες, δηλαδή \\( \\mathit{a^*} \\) και \\( \\mathit{b^*} \\)."
+        "description": ""
       },
       {
         "text": "\\( \\mathit{a^*b^*} \\cap \\mathit{b^*c^*} = \\emptyset \\)",
         "correct": false,
-        "description": "Η τομή δεν είναι κενή, καθώς περιέχει τουλάχιστον την κενή συμβολοσειρά \\( \\epsilon \\)."
+        "description": ""
       },
       {
         "text": "\\( \\mathit{abcd} \\in (\\mathit{a}(\\mathit{cd})^*\\mathit{b})^* \\)",
         "correct": false,
-        "description": "Η έκφραση \\( (\\mathit{a}(\\mathit{cd})^*\\mathit{b})^* \\) δεν μπορεί να παράγει την συμβολοσειρά \\( \\mathit{abcd} \\), καθώς η δομή της δεν ταιριάζει με το μοτίβο."
+        "description": ""
       }
     ]
   }
