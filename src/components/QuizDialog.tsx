@@ -109,7 +109,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             </button>
           </div>
 
-          <div className="mb-6 max-h-70 overflow-y-auto md:max-h-80">
+          <div className="max-h-70 mb-6 overflow-y-auto md:max-h-80">
             <MathJax>{renderWithNewlines(question.question)}</MathJax>
             {currentImage && (
               <div className="mt-4 flex justify-center">
@@ -123,7 +123,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             )}
           </div>
 
-          <div className="max-h-60 space-y-1 overflow-y-auto md:max-h-70">
+          <div className="md:max-h-70 max-h-60 space-y-1 overflow-y-auto">
             {question.answers.map((answer, index) => (
               <div key={index}>
                 <div onClick={() => handleAnswerClick(index)} className={getAnswerClassName(index)}>
