@@ -17,6 +17,8 @@ import lec16 from '../data/lec16.json';
 import lec17 from '../data/lec17.json';
 import lec18 from '../data/lec18.json';
 import lec19 from '../data/lec19.json';
+import lec20 from '../data/lec20.json';
+import lec21 from '../data/lec21.json';
 import mega2025 from '../data/mega2025.json';
 
 export const quizzes = [
@@ -133,6 +135,18 @@ export const quizzes = [
     title: 'Μάθημα 19',
     description: '',
     questions: lec19,
+  },
+  {
+    id: 'quiz-20',
+    title: 'Μάθημα 20',
+    description: '',
+    questions: lec20,
+  },
+  {
+    id: 'quiz-21',
+    title: 'Μάθημα 21',
+    description: '',
+    questions: lec21,
   },
   {
     id: 'mega-quiz-1',
