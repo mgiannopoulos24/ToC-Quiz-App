@@ -6,6 +6,12 @@ import { useState } from 'react';
 function App() {
   const [isExamModeOpen, setIsExamModeOpen] = useState(false);
 
+  // Corrected filtering: exclude mega from regular quizzes
+  const regularQuizzes = quizzes.filter(
+    (quiz) => quiz.id.includes('quiz') && !quiz.id.includes('mega')
+  );
+  const megaQuizzes = quizzes.filter((quiz) => quiz.id.includes('mega'));
+
   return (
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="mx-auto max-w-6xl">
@@ -18,11 +24,26 @@ function App() {
             Λειτουργία Εξέτασης
           </button>
         </div>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {quizzes.map((quiz) => (
-            <QuizCard key={quiz.id} quiz={quiz} />
-          ))}
-        </div>
+
+        {/* Regular Quizzes Section */}
+        <section className="mb-12">
+          <h2 className="mb-6 text-3xl font-semibold text-gray-700">Quiz</h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {regularQuizzes.map((quiz) => (
+              <QuizCard key={quiz.id} quiz={quiz} />
+            ))}
+          </div>
+        </section>
+
+        {/* Mega Quizzes Section */}
+        <section>
+          <h2 className="mb-6 text-3xl font-semibold text-gray-700">Mega Quiz</h2>
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {megaQuizzes.map((quiz) => (
+              <QuizCard key={quiz.id} quiz={quiz} />
+            ))}
+          </div>
+        </section>
       </div>
 
       <ExaminationDialog
