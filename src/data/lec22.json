@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Για τους φοιτητές Πληροφορικής, ορίζουμε το Church-distance τους ως εξής: αν τους έχει διδάξει Θεωρία Υπολογισμού ο ίδιος ο Church, τότε έχουν Church distance ίσο με 1. Αν τους έχει διδάξει Θεωρία Υπολογισμού ένας μαθητής του Church, τότε έχουν Church distance 2, κλπ. Ποιο είναι το Church distance σας;",
+    "answers": [
+      {
+        "text": "0 (σας λένε Alonzo;)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "1 (Καλή προσπάθεια...)",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "2",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "3",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "4",
+        "correct": false,
+        "description": ""
+      },
+      {
+        "text": "5",
+        "correct": true,
+        "description": ""
+      },
+      {
+        "text": "\\(\\infty\\)",
+        "correct": false,
+        "description": ""
+      }
+    ]
+  }
+]
