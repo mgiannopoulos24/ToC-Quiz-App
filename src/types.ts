@@ -16,3 +16,19 @@ export interface Quiz {
   description: string;
   questions: Question[];
 }
+
+export interface TrueFalseQuestion {
+  group: string;
+  id: number;
+  question: string;
+  correctAnswer: string;
+  explanation: string;
+  hint?: string; // Optional
+}
+
+export interface TrueFalseQuiz {
+  id: string;
+  title: string;
+  description: string;
+  questions: TrueFalseQuestion[];
+}

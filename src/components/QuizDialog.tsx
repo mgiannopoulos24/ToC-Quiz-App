@@ -46,6 +46,11 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   const question = quiz.questions[currentQuestion];
 
   const handleAnswerClick = (index: number) => {
+    // Prevent clicking if an answer is already selected
+    if (selectedAnswer !== null) {
+      return;
+    }
+
     setSelectedAnswer(index);
     setExpandedAnswers((prev) => {
       const newState = [...prev];
@@ -63,13 +68,19 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
     if (selectedAnswer === null) {
       return 'border border-gray-300 p-4 rounded-lg mb-2 hover:bg-gray-50 cursor-pointer';
     }
+
+    // Show correct answers in green
     if (question.answers[index].correct) {
-      return 'border border-green-500 bg-green-50 p-4 rounded-lg mb-2';
+      return 'border border-green-500 bg-green-50 p-4 rounded-lg mb-2 cursor-default';
     }
-    if (index === selectedAnswer && !question.answers[index].correct) {
-      return 'border border-red-500 bg-red-50 p-4 rounded-lg mb-2';
+
+    // Show ALL wrong answers in red when any answer is selected
+    if (!question.answers[index].correct) {
+      return 'border border-red-500 bg-red-50 p-4 rounded-lg mb-2 cursor-default';
     }
-    return 'border border-gray-300 p-4 rounded-lg mb-2 opacity-50';
+
+    // Fallback (shouldn't reach here)
+    return 'border border-gray-300 p-4 rounded-lg mb-2 cursor-default';
   };
 
   const goToNextQuestion = () => {

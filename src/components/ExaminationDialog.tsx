@@ -68,6 +68,9 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
   const handleAnswerClick = (index: number) => {
     if (score !== null) return; // Don't allow changes after finishing
 
+    // Don't allow changes if this question already has an answer
+    if (selectedAnswers[currentQuestionIndex] !== null) return;
+
     setSelectedAnswers((prev) => {
       const newAnswers = [...prev];
       newAnswers[currentQuestionIndex] = index;
@@ -117,23 +120,26 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
 
   const getAnswerClassName = (index: number) => {
     const isSelected = selectedAnswers[currentQuestionIndex] === index;
+    const hasAnswer = selectedAnswers[currentQuestionIndex] !== null;
 
     if (score !== null) {
-      // After finishing
+      // After finishing - show all correct answers in green, all wrong in red
       const isCorrect = currentQuestion.answers[index].correct;
       if (isCorrect) {
-        return 'border border-green-500 bg-green-50 p-4 rounded-lg mb-2'; // Correct answer
+        return 'border border-green-500 bg-green-50 p-4 rounded-lg mb-2 cursor-default'; // Correct answer
       }
-      if (isSelected && !isCorrect) {
-        return 'border border-red-500 bg-red-50 p-4 rounded-lg mb-2'; // Incorrectly selected
+      if (!isCorrect) {
+        return 'border border-red-500 bg-red-50 p-4 rounded-lg mb-2 cursor-default'; // Wrong answers
       }
-      return 'border border-gray-300 p-4 rounded-lg mb-2 opacity-50'; // Other answers
     } else {
       // During exam
       if (isSelected) {
-        return 'border border-blue-500 bg-blue-50 p-4 rounded-lg mb-2 cursor-pointer'; // Selected
+        return 'border border-blue-500 bg-blue-50 p-4 rounded-lg mb-2 cursor-default'; // Selected (locked)
       }
-      return 'border border-gray-300 p-4 rounded-lg mb-2 hover:bg-gray-50 cursor-pointer'; // Not selected
+      if (hasAnswer) {
+        return 'border border-gray-300 p-4 rounded-lg mb-2 cursor-default'; // Question answered, other options locked
+      }
+      return 'border border-gray-300 p-4 rounded-lg mb-2 hover:bg-gray-50 cursor-pointer'; // Not selected, still clickable
     }
   };
 
