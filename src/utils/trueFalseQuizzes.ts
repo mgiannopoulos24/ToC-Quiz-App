@@ -2,9 +2,9 @@ import { TrueFalseQuiz } from '../types';
 
 export const trueFalseQuizzes: TrueFalseQuiz[] = [
   {
-    id: 'tf-general',
-    title: 'Γενικές Ερωτήσεις Σωστό/Λάθος',
-    description: 'Ερωτήσεις σωστού-λάθους για τη Θεωρία Υπολογισμού',
+    id: 'tf-questions',
+    title: 'Ερωτήσεις Σωστό/Λάθος',
+    description: '',
     questions: [
       // Default Group
       {
