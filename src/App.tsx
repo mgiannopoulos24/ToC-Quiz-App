@@ -56,6 +56,17 @@ function App() {
             ))}
           </div>
         </section>
+        <footer className="mt-12 text-center text-sm text-gray-500">
+          Για προτάσεις / προσθήκες, δημιουργήστε ένα issue στο{' '}
+          <a
+            href="https://github.com/mgiannopoulos24/ToC-Quiz-App"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-600 underline hover:text-blue-800"
+          >
+            GitHub
+          </a>
+        </footer>
       </div>
 
       <ExaminationDialog
