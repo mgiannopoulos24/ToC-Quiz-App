@@ -1,5 +1,6 @@
 import ExaminationDialog from './components/ExaminationDialog';
 import QuizCard from './components/QuizCard';
+import ScrollToTop from './components/ScrollToTop';
 import TrueFalseCard from './components/TrueFalseCard';
 import { quizzes } from './utils/quizzes';
 import { trueFalseQuizzes } from './utils/trueFalseQuizzes';
@@ -18,13 +19,15 @@ function App() {
     <div className="min-h-screen bg-gray-100 p-8">
       <div className="mx-auto max-w-6xl">
         <div className="mb-8 text-center">
-          <h1 className="mb-4 text-4xl font-bold text-gray-800">Κουίζ Θεωρίας Υπολογισμού</h1>
-          <button
-            onClick={() => setIsExamModeOpen(true)}
-            className="rounded-lg bg-green-600 px-4 py-2 text-white transition-colors hover:bg-green-700"
-          >
-            Λειτουργία Εξέτασης
-          </button>
+          <h1 className="text-4xl font-bold text-gray-800">Κουίζ Θεωρίας Υπολογισμού</h1>
+          <div className="mt-6">
+            <button
+              onClick={() => setIsExamModeOpen(true)}
+              className="rounded-lg bg-green-600 px-4 py-2 text-white transition-colors hover:bg-green-700"
+            >
+              Λειτουργία Εξέτασης
+            </button>
+          </div>
         </div>
 
         {/* Regular Quizzes Section */}
@@ -74,6 +77,7 @@ function App() {
         onClose={() => setIsExamModeOpen(false)}
         allQuizzes={quizzes}
       />
+      <ScrollToTop />
     </div>
   );
 }

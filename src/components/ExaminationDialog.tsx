@@ -144,9 +144,9 @@ export default function ExaminationDialog({ isOpen, onClose, allQuizzes }: Exami
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-2 sm:p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-2 sm:p-4">
       <MathJaxContext>
-        <div className="flex h-full max-h-[95vh] w-full max-w-3xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
+        <div className="flex h-full max-h-[95vh] w-full max-w-2xl flex-col overflow-hidden rounded-xl bg-white shadow-2xl">
           <div className="flex flex-shrink-0 items-center justify-between border-b p-4 sm:p-6">
             <h2 className="text-xl font-semibold sm:text-2xl">
               {score === null ? 'Εξέταση σε Εξέλιξη' : 'Αποτελέσματα Εξέτασης'}
