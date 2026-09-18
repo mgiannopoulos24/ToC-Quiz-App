@@ -13,6 +13,8 @@ interface QuizDialogProps {
 export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
+  const [selectedMulti, setSelectedMulti] = useState<number[]>([]);
+  const [submitted, setSubmitted] = useState(false);
   const [expandedAnswers, setExpandedAnswers] = useState<boolean[]>([]);
   const [currentImage, setCurrentImage] = useState<string | null>(null); // State for the current image
 
@@ -25,6 +27,8 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   useEffect(() => {
     if (!isOpen) {
       setSelectedAnswer(null);
+      setSelectedMulti([]);
+      setSubmitted(false);
       setCurrentQuestion(0);
     }
   }, [isOpen]);
@@ -44,29 +48,73 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   if (!isOpen) return null;
 
   const question = quiz.questions[currentQuestion];
+  const correctCount = question.answers.filter((a) => a.correct).length;
+  const isMulti = correctCount > 1;
+  // Nothing is revealed until the user presses "Check"
+  const isRevealed = submitted;
 
   const handleAnswerClick = (index: number) => {
-    // Prevent clicking if an answer is already selected
-    if (selectedAnswer !== null) {
+    if (isMulti) {
+      // Multi-select: toggle selection without revealing until check
+      if (submitted) return;
+      setSelectedMulti((prev) =>
+        prev.includes(index) ? prev.filter((i) => i !== index) : [...prev, index]
+      );
       return;
     }
 
+    // Single-select: pick an answer, reveal only after check
+    if (submitted) return;
     setSelectedAnswer(index);
-    setExpandedAnswers((prev) => {
-      const newState = [...prev];
-      newState[index] = !newState[index];
-      return newState;
-    });
   };
 
   const handleClose = () => {
     onClose();
     setSelectedAnswer(null);
+    setSelectedMulti([]);
+    setSubmitted(false);
+  };
+
+  const handleSubmit = () => {
+    if (submitted) return;
+    if (isMulti) {
+      if (selectedMulti.length === 0) return;
+      setSubmitted(true);
+      setExpandedAnswers((prev) => {
+        const newState = [...prev];
+        selectedMulti.forEach((i) => {
+          newState[i] = true;
+        });
+        return newState;
+      });
+      return;
+    }
+    if (selectedAnswer === null) return;
+    setSubmitted(true);
+    setExpandedAnswers((prev) => {
+      const newState = [...prev];
+      newState[selectedAnswer] = true;
+      return newState;
+    });
   };
 
   const getAnswerClassName = (index: number) => {
-    if (selectedAnswer === null) {
-      return 'border border-gray-300 p-4 rounded-lg mb-2 hover:bg-gray-50 cursor-pointer';
+    if (isMulti) {
+      if (!submitted) {
+        return selectedMulti.includes(index)
+          ? 'border border-blue-500 bg-blue-50 p-4 rounded-lg mb-2 hover:bg-blue-100 cursor-pointer'
+          : 'border border-gray-300 p-4 rounded-lg mb-2 hover:bg-gray-50 cursor-pointer';
+      }
+      // After check: correct in green, wrong in red
+      if (question.answers[index].correct) {
+        return 'border border-green-500 bg-green-50 p-4 rounded-lg mb-2 cursor-default';
+      }
+      return 'border border-red-500 bg-red-50 p-4 rounded-lg mb-2 cursor-default';
+    }
+    if (!submitted) {
+      return selectedAnswer === index
+        ? 'border border-blue-500 bg-blue-50 p-4 rounded-lg mb-2 hover:bg-blue-100 cursor-pointer'
+        : 'border border-gray-300 p-4 rounded-lg mb-2 hover:bg-gray-50 cursor-pointer';
     }
 
     // Show correct answers in green
@@ -85,6 +133,8 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
 
   const goToNextQuestion = () => {
     setSelectedAnswer(null);
+    setSelectedMulti([]);
+    setSubmitted(false);
     if (currentQuestion < quiz.questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     }
@@ -92,6 +142,8 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
 
   const goToPreviousQuestion = () => {
     setSelectedAnswer(null);
+    setSelectedMulti([]);
+    setSubmitted(false);
     if (currentQuestion > 0) {
       setCurrentQuestion(currentQuestion - 1);
     }
@@ -107,9 +159,9 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 p-4">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/40 p-4">
       <MathJaxContext key={currentQuestion}>
-        <div className="w-full max-w-2xl rounded-xl bg-white p-6 md:max-w-4xl md:p-8">
+        <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-6 md:p-8">
           <div className="mb-6 flex items-center justify-between">
             <h3 className="text-xl font-bold">
               {currentQuestion + 1}/{quiz.questions.length}{' '}
@@ -120,8 +172,13 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             </button>
           </div>
 
-          <div className="max-h-70 mb-6 overflow-y-auto md:max-h-80">
+          <div className="mb-6">
             <MathJax>{renderWithNewlines(question.question)}</MathJax>
+            {isMulti && (
+              <p className="mt-2 text-sm font-medium text-blue-700">
+                Ερώτηση πολλαπλής επιλογής — επίλεξε τις απαντήσεις σου και πάτα «Έλεγχος».
+              </p>
+            )}
             {currentImage && (
               <div className="mt-4 flex justify-center">
                 <img
@@ -134,13 +191,13 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             )}
           </div>
 
-          <div className="md:max-h-70 max-h-60 space-y-1 overflow-y-auto">
+          <div className="space-y-1">
             {question.answers.map((answer, index) => (
               <div key={index}>
                 <div onClick={() => handleAnswerClick(index)} className={getAnswerClassName(index)}>
                   <MathJax>{renderWithNewlines(answer.text)}</MathJax>
                 </div>
-                {selectedAnswer !== null && (
+                {isRevealed && (
                   <div className="mt-4">
                     <button
                       onClick={() => {
@@ -166,6 +223,16 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
               </div>
             ))}
           </div>
+
+          {!submitted && (
+            <button
+              onClick={handleSubmit}
+              disabled={isMulti ? selectedMulti.length === 0 : selectedAnswer === null}
+              className="mt-4 w-full rounded-lg bg-green-600 px-4 py-2 text-white transition-colors hover:bg-green-700 disabled:opacity-50"
+            >
+              {isMulti ? `Έλεγχος (${selectedMulti.length} επιλεγμένες)` : 'Έλεγχος'}
+            </button>
+          )}
 
           <div className="mt-6 flex justify-between">
             <button
