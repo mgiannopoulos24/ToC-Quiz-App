@@ -2,18 +2,15 @@ import ExaminationDialog from './components/ExaminationDialog';
 import QuizCard from './components/QuizCard';
 import ScrollToTop from './components/ScrollToTop';
 import TrueFalseCard from './components/TrueFalseCard';
-import { quizzes } from './utils/quizzes';
-import { trueFalseQuizzes } from './utils/trueFalseQuizzes';
+import { megaQuizzes } from './data/megaQuizzes';
+import { quizzes } from './data/quizzes';
+import { trueFalseQuizzes } from './data/trueFalseQuizzes';
 import { useState } from 'react';
 
 function App() {
   const [isExamModeOpen, setIsExamModeOpen] = useState(false);
 
-  // Corrected filtering: exclude mega from regular quizzes
-  const regularQuizzes = quizzes.filter(
-    (quiz) => quiz.id.includes('quiz') && !quiz.id.includes('mega')
-  );
-  const megaQuizzes = quizzes.filter((quiz) => quiz.id.includes('mega'));
+  const regularQuizzes = quizzes;
 
   return (
     <div className="min-h-screen bg-gray-100 p-8">
@@ -60,6 +57,9 @@ function App() {
           </div>
         </section>
         <footer className="mt-12 text-center text-sm text-gray-500">
+          <p className="mb-2">
+            Οι εξηγήσεις έχουν παραχθεί από ΑΙ — μην βασίζεστε πλήρως σε αυτές.
+          </p>
           Για προτάσεις / προσθήκες, δημιουργήστε ένα issue στο{' '}
           <a
             href="https://github.com/mgiannopoulos24/ToC-Quiz-App"
@@ -75,7 +75,7 @@ function App() {
       <ExaminationDialog
         isOpen={isExamModeOpen}
         onClose={() => setIsExamModeOpen(false)}
-        allQuizzes={quizzes}
+        allQuizzes={[...quizzes, ...megaQuizzes]}
       />
       <ScrollToTop />
     </div>

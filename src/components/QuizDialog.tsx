@@ -1,7 +1,7 @@
 import { Quiz } from '../types';
 import { loadImage } from '../utils/loadImage';
 import { MathJax, MathJaxContext } from 'better-react-mathjax';
-import { ChevronDown, ChevronUp, X } from 'lucide-react';
+import { X } from 'lucide-react';
 import { useEffect, useState } from 'react';
 
 interface QuizDialogProps {
@@ -15,14 +15,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   const [selectedAnswer, setSelectedAnswer] = useState<number | null>(null);
   const [selectedMulti, setSelectedMulti] = useState<number[]>([]);
   const [submitted, setSubmitted] = useState(false);
-  const [expandedAnswers, setExpandedAnswers] = useState<boolean[]>([]);
   const [currentImage, setCurrentImage] = useState<string | null>(null); // State for the current image
-
-  useEffect(() => {
-    if (quiz.questions[currentQuestion]) {
-      setExpandedAnswers(new Array(quiz.questions[currentQuestion].answers.length).fill(false));
-    }
-  }, [currentQuestion, quiz]);
 
   useEffect(() => {
     if (!isOpen) {
@@ -50,8 +43,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   const question = quiz.questions[currentQuestion];
   const correctCount = question.answers.filter((a) => a.correct).length;
   const isMulti = correctCount > 1;
-  // Nothing is revealed until the user presses "Check"
-  const isRevealed = submitted;
+  const correctAnswers = question.answers.filter((a) => a.correct);
 
   const handleAnswerClick = (index: number) => {
     if (isMulti) {
@@ -80,22 +72,10 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
     if (isMulti) {
       if (selectedMulti.length === 0) return;
       setSubmitted(true);
-      setExpandedAnswers((prev) => {
-        const newState = [...prev];
-        selectedMulti.forEach((i) => {
-          newState[i] = true;
-        });
-        return newState;
-      });
       return;
     }
     if (selectedAnswer === null) return;
     setSubmitted(true);
-    setExpandedAnswers((prev) => {
-      const newState = [...prev];
-      newState[selectedAnswer] = true;
-      return newState;
-    });
   };
 
   const getAnswerClassName = (index: number) => {
@@ -159,7 +139,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/40 p-4">
+    <div className="fixed inset-0 flex items-center justify-center bg-black/70 p-4">
       <MathJaxContext key={currentQuestion}>
         <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-6 md:p-8">
           <div className="mb-6 flex items-center justify-between">
@@ -197,29 +177,6 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
                 <div onClick={() => handleAnswerClick(index)} className={getAnswerClassName(index)}>
                   <MathJax>{renderWithNewlines(answer.text)}</MathJax>
                 </div>
-                {isRevealed && (
-                  <div className="mt-4">
-                    <button
-                      onClick={() => {
-                        setExpandedAnswers((prev) => {
-                          const newState = [...prev];
-                          newState[index] = !newState[index];
-                          return newState;
-                        });
-                      }}
-                      className="flex items-center gap-2 text-blue-600 hover:text-blue-700"
-                    >
-                      {expandedAnswers[index] ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
-                      {expandedAnswers[index] ? 'Κρύψε την' : 'Δείξε την'} εξήγηση
-                    </button>
-
-                    {expandedAnswers[index] && (
-                      <div className="mt-2 rounded-lg bg-gray-50 p-4">
-                        <MathJax>{renderWithNewlines(answer.description)}</MathJax>
-                      </div>
-                    )}
-                  </div>
-                )}
               </div>
             ))}
           </div>
@@ -232,6 +189,17 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
             >
               {isMulti ? `Έλεγχος (${selectedMulti.length} επιλεγμένες)` : 'Έλεγχος'}
             </button>
+          )}
+
+          {submitted && (
+            <div className="mt-4 rounded-lg border border-gray-200 bg-gray-50 p-4">
+              <h4 className="mb-2 font-medium text-gray-800">Εξήγηση:</h4>
+              <div className="space-y-2 text-gray-700">
+                {correctAnswers.map((answer, index) => (
+                  <MathJax key={index}>{renderWithNewlines(answer.description)}</MathJax>
+                ))}
+              </div>
+            </div>
           )}
 
           <div className="mt-6 flex justify-between">

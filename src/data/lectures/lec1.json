@@ -1,0 +1,32 @@
+[
+  {
+    "question": "Έστω τα \\(\\mathit{A}\\), \\(\\mathit{B}\\) σύνολα. Ποια (ή ποιες) από τις παρακάτω προτάσεις είναι λανθασμένη (λανθασμένες); Θυμίζουμε ότι \\(\\mathit{A} - \\mathit{B} = \\mathit{A} \\cap \\bar{\\mathit{B}}\\).",
+    "answers": [
+      {
+        "text": "\\((\\mathit{A} - \\mathit{Β})\\ \\cup \\mathit{B} = \\mathit{A} \\cup \\mathit{B} \\)",
+        "correct": false,
+        "description": "Ισχύει: \\( (A-B)\\cup B = (A\\cap\\bar B)\\cup B = (A\\cup B)\\cap(\\bar B\\cup B) = A\\cup B \\). Η πρόταση είναι σωστή, άρα δεν είναι η ζητούμενη «λανθασμένη»."
+      },
+      {
+        "text": "\\((\\mathit{A} - \\mathit{Β})\\ \\cap \\mathit{Β} =  \\emptyset \\)",
+        "correct": false,
+        "description": "Ισχύει: \\( (A-B)\\cap B = A\\cap\\bar B\\cap B = A\\cap\\emptyset = \\emptyset \\). Η πρόταση είναι σωστή, άρα δεν είναι η ζητούμενη «λανθασμένη»."
+      },
+      {
+        "text": "\\((\\mathit{A} = \\mathit{Β}) \\iff ( \\mathit{A} - \\mathit{B} = \\mathit{B} - \\mathit{A}) \\)",
+        "correct": false,
+        "description": "Ισχύει: αν \\( A=B \\) τότε \\( A-B = B-A = \\emptyset \\). Αντίστροφα, ένα \\( x\\in A-B \\) θα έπρεπε να ανήκει και στο \\( B-A \\), δηλαδή να είναι και στο \\( B \\) και όχι στο \\( B \\) — άτοπο. Άρα \\( A-B = B-A = \\emptyset \\), δηλαδή \\( A\\subseteq B \\) και \\( B\\subseteq A \\). Η πρόταση είναι σωστή."
+      },
+      {
+        "text": "\\((\\mathit{A} - \\mathit{B} = \\mathit{A}) \\iff (\\mathit{A} \\cap \\mathit{B} = \\emptyset)\\)",
+        "correct": false,
+        "description": "Ισχύει: \\( A\\cap\\bar B = A \\iff A\\subseteq \\bar B \\iff A\\cap B=\\emptyset \\). Η πρόταση είναι σωστή, άρα δεν είναι η ζητούμενη «λανθασμένη»."
+      },
+      {
+        "text": "Όλες οι προηγούμενες προτάσεις είναι λάθος.",
+        "correct": true,
+        "description": "Και οι τέσσερις προηγούμενες ισότητες/ισοδυναμίες ισχύουν πάντα. Άρα καμία από αυτές δεν είναι λανθασμένη και όποια από τις επιλογές 1–4 διαλέξουμε ως «λανθασμένη» κάνουμε λάθος· η μόνη σωστή απάντηση είναι η τελευταία."
+      }
+    ]
+  }
+]

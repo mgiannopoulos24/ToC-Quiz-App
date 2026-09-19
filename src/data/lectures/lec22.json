@@ -1,0 +1,42 @@
+[
+  {
+    "question": "Για τους φοιτητές Πληροφορικής, ορίζουμε το Church-distance τους ως εξής: αν τους έχει διδάξει Θεωρία Υπολογισμού ο ίδιος ο Church, τότε έχουν Church distance ίσο με 1. Αν τους έχει διδάξει Θεωρία Υπολογισμού ένας μαθητής του Church, τότε έχουν Church distance 2, κλπ. Ποιο είναι το Church distance σας;",
+    "answers": [
+      {
+        "text": "0 (σας λένε Alonzo;)",
+        "correct": false,
+        "description": "Λάθος. Church distance 0 θα είχε μόνο ο ίδιος ο Alonzo Church."
+      },
+      {
+        "text": "1 (Καλή προσπάθεια...)",
+        "correct": false,
+        "description": "Λάθος. Church distance 1 έχουν μόνο οι άμεσοι μαθητές του Church (π.χ. Turing, Kleene, Rosser) — ο Church πέθανε το 1995."
+      },
+      {
+        "text": "2",
+        "correct": false,
+        "description": "Λάθος. Η αλυσίδα επίβλεψης μέχρι τον διδάσκοντα του μαθήματος είναι μακρύτερη."
+      },
+      {
+        "text": "3",
+        "correct": false,
+        "description": "Λάθος. Η αλυσίδα επίβλεψης μέχρι τον διδάσκοντα του μαθήματος είναι μακρύτερη."
+      },
+      {
+        "text": "4",
+        "correct": false,
+        "description": "Λάθος. Η αλυσίδα έχει ένα ακόμη σκαλοπάτι: 4 είναι το Church distance του διδάσκοντα, όχι των φοιτητών του."
+      },
+      {
+        "text": "5",
+        "correct": true,
+        "description": "Σωστό. Η ακαδημαϊκή «γενεαλογία» του διδάσκοντα (Π. Ροντογιάννης) είναι: Alonzo Church \\( \\to \\) Stephen Kleene \\( \\to \\) John Addison \\( \\to \\) William Wadge \\( \\to \\) Παναγιώτης Ροντογιάννης. Άρα ο διδάσκων έχει Church distance 4 και οι φοιτητές του 5."
+      },
+      {
+        "text": "\\(\\infty\\)",
+        "correct": false,
+        "description": "Λάθος. Υπάρχει πεπερασμένη αλυσίδα επιβλεπόντων που φτάνει στον Church, άρα η απόσταση είναι πεπερασμένη (ίση με 5)."
+      }
+    ]
+  }
+]
