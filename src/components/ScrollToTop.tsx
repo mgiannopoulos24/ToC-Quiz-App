@@ -17,7 +17,7 @@ export default function ScrollToTop() {
     <button
       onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
       aria-label="Επιστροφή στην κορυφή"
-      className="fixed bottom-6 right-6 rounded-full bg-gray-800 p-3 text-white shadow-lg transition-colors hover:bg-gray-700"
+      className="fixed right-6 bottom-6 rounded-full bg-gray-800 p-3 text-white shadow-lg transition-colors hover:bg-gray-700"
     >
       <ArrowUp size={20} />
     </button>
