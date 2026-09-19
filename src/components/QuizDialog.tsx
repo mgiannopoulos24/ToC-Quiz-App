@@ -139,7 +139,7 @@ export default function QuizDialog({ quiz, isOpen, onClose }: QuizDialogProps) {
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-black/70 p-4">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4">
       <MathJaxContext key={currentQuestion}>
         <div className="max-h-[90vh] w-full max-w-2xl overflow-y-auto rounded-xl bg-white p-6 md:p-8">
           <div className="mb-6 flex items-center justify-between">
